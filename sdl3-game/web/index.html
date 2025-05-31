@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDL3 Game</title>
+    <script src="game.js"></script>
+</head>
+<body>
+    <h1>Welcome to SDL3 Game</h1>
+    <canvas id="gameCanvas"></canvas>
+    <script>
+        // Initialize the game when the window loads
+        window.onload = function() {
+            const canvas = document.getElementById('gameCanvas');
+            const context = canvas.getContext('2d');
+            // Call the game initialization function here
+            initGame(canvas, context);
+        };
+    </script>
+</body>
+</html>

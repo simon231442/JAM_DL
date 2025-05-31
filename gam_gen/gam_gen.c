@@ -30,7 +30,7 @@ void generateGamDLHeader(FILE* file, const char* filename, const char* author)
     getCurrentDate(date);
     
     fprintf(file, "/*                                                                             *\n");
-    fprintf(file, " *                ██████╗  █████╗ ███╗   ███╗     ██████╗ ██╗                  *\n");
+    fprintf(file, " *                 ██████╗  █████╗ ███╗   ███╗     ██████╗ ██╗                 *\n");
     fprintf(file, " *                ██╔════╝ ██╔══██╗████╗ ████║     ██╔══██╗██║                 *\n");
     fprintf(file, " *                ██║  ███╗███████║██╔████╔██║     ██║  ██║██║                 *\n");
     fprintf(file, " *                ██║   ██║██╔══██║██║╚██╔╝██║     ██║  ██║██║                 *\n");
