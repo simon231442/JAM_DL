@@ -9,48 +9,55 @@
  * ╭─────────────────────────────────────────────────────────────────────────╮ *
  * │  ** LEGENDARY ULTRA-MEGA AWESOME LIBRARY SDL3 C FOR RENDERS, MUSICS **  │ *
  * ├─────────────────────────────────────────────────────────────────────────┤ *
- * │  -> Nom      : GAM_DL.h (Header Principal - Include Tout)               │ *
+ * │  -> Nom      : GAM_DL_draw.h                                            │ *
  * │  -> Auteur   : tricaducee SpartaCod lolilol                             │ *
  * │  -> Date     : 01/06/2025                                               │ *
  * ╰─────────────────────────────────────────────────────────────────────────╯ *
  */
 
-#ifndef GAM_DL_H
-#define GAM_DL_H
+#ifndef GAM_DL_DRAW_H
+#define GAM_DL_DRAW_H
+
+#include "GAM_DL_core.h"
 
 // ═══════════════════════════════════════════════════════════════════════════
-// INCLUSIONS DE TOUS LES MODULES GAM_DL
+// TYPES POUR LE DESSIN
 // ═══════════════════════════════════════════════════════════════════════════
 
-#include "GAM_DL_core.h"	// Fonctions de base (window, init, quit)
-#include "GAM_DL_texture.h" // Textures, images, sprites
-#include "GAM_DL_draw.h"	// Fonctions de dessin
-#include "GAM_DL_events.h"	// Gestion des événements
+typedef struct
+{
+    float x, y;
+} GAM_Point;
+
+typedef struct
+{
+    float x, y, w, h;
+} GAM_Rect;
+
+typedef struct
+{
+    Uint8 r, g, b, a;
+} GAM_Color;
 
 // ═══════════════════════════════════════════════════════════════════════════
-// CONSTANTES GLOBALES DE COMPATIBILITÉ
+// VOS FONCTIONS EXISTANTES (à implémenter)
 // ═══════════════════════════════════════════════════════════════════════════
 
-// Aliases pour compatibilité avec l'ancienne API
-#define WIDTH GAM_DL_DEFAULT_WIDTH
-#define HEIGHT GAM_DL_DEFAULT_HEIGHT
-#define GAM_Window GAM_Window // Déjà défini dans core
-
-// Aliases des fonctions principales (compatibilité)
-#define GAM_DL_CoreWindowPop(w, h) GAM_DL_CreateWindow(w, h, "GAM_DL Window")
-#define GAM_DL_GAM_DL_CoreExit(window) GAM_DL_DestroyWindow(window)
-#define GAM_DL_CoreExit(window) GAM_DL_DestroyWindow(window)
+// Espace réservé pour vos futures fonctions de dessin
 
 // ═══════════════════════════════════════════════════════════════════════════
-// INFORMATIONS SUR LA BIBLIOTHÈQUE
+// COULEURS PRÉDÉFINIES UTILES
 // ═══════════════════════════════════════════════════════════════════════════
 
-#define GAM_DL_VERSION_MAJOR 1
-#define GAM_DL_VERSION_MINOR 0
-#define GAM_DL_VERSION_PATCH 0
-#define GAM_DL_VERSION_STRING "1.0.0"
+// Macros pour couleurs courantes
+#define GAM_COLOR_BLACK (GAM_Color){0, 0, 0, 255}
+#define GAM_COLOR_WHITE (GAM_Color){255, 255, 255, 255}
+#define GAM_COLOR_RED (GAM_Color){255, 0, 0, 255}
+#define GAM_COLOR_GREEN (GAM_Color){0, 255, 0, 255}
+#define GAM_COLOR_BLUE (GAM_Color){0, 0, 255, 255}
+#define GAM_COLOR_YELLOW (GAM_Color){255, 255, 0, 255}
+#define GAM_COLOR_MAGENTA (GAM_Color){255, 0, 255, 255}
+#define GAM_COLOR_CYAN (GAM_Color){0, 255, 255, 255}
+#define GAM_COLOR_TRANSPARENT (GAM_Color){0, 0, 0, 0}
 
-// Fonction pour obtenir la version
-const char *GAM_DL_GetVersion(void);
-
-#endif // GAM_DL_H
+#endif // GAM_DL_DRAW_H

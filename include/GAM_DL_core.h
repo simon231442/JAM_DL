@@ -9,48 +9,54 @@
  * ╭─────────────────────────────────────────────────────────────────────────╮ *
  * │  ** LEGENDARY ULTRA-MEGA AWESOME LIBRARY SDL3 C FOR RENDERS, MUSICS **  │ *
  * ├─────────────────────────────────────────────────────────────────────────┤ *
- * │  -> Nom      : GAM_DL.h (Header Principal - Include Tout)               │ *
+ * │  -> Nom      : GAM_DL_core.h                                            │ *
  * │  -> Auteur   : tricaducee SpartaCod lolilol                             │ *
  * │  -> Date     : 01/06/2025                                               │ *
  * ╰─────────────────────────────────────────────────────────────────────────╯ *
  */
 
-#ifndef GAM_DL_H
-#define GAM_DL_H
+#ifndef GAM_DL_CORE_H
+#define GAM_DL_CORE_H
+
+#include <SDL3/SDL.h>
+#include <stdbool.h>
+#include <stdlib.h>
 
 // ═══════════════════════════════════════════════════════════════════════════
-// INCLUSIONS DE TOUS LES MODULES GAM_DL
+// CONSTANTES ET DÉFINITIONS
 // ═══════════════════════════════════════════════════════════════════════════
 
-#include "GAM_DL_core.h"	// Fonctions de base (window, init, quit)
-#include "GAM_DL_texture.h" // Textures, images, sprites
-#include "GAM_DL_draw.h"	// Fonctions de dessin
-#include "GAM_DL_events.h"	// Gestion des événements
+#define GAM_DL_DEFAULT_WIDTH 800
+#define GAM_DL_DEFAULT_HEIGHT 600
 
 // ═══════════════════════════════════════════════════════════════════════════
-// CONSTANTES GLOBALES DE COMPATIBILITÉ
+// STRUCTURES PRINCIPALES
 // ═══════════════════════════════════════════════════════════════════════════
 
-// Aliases pour compatibilité avec l'ancienne API
-#define WIDTH GAM_DL_DEFAULT_WIDTH
-#define HEIGHT GAM_DL_DEFAULT_HEIGHT
-#define GAM_Window GAM_Window // Déjà défini dans core
+typedef struct
+{
+    SDL_Window *window;     // Fenêtre SDL
+    SDL_Renderer *renderer; // Renderer SDL
+    SDL_Texture *texture;   // Texture pour manipulation pixels
 
-// Aliases des fonctions principales (compatibilité)
-#define GAM_DL_CoreWindowPop(w, h) GAM_DL_CreateWindow(w, h, "GAM_DL Window")
-#define GAM_DL_GAM_DL_CoreExit(window) GAM_DL_DestroyWindow(window)
-#define GAM_DL_CoreExit(window) GAM_DL_DestroyWindow(window)
+    // Informations sur l'image/pixels
+    void *pixels; // Adresse des pixels
+    int width;    // Largeur de la fenêtre
+    int height;   // Hauteur de la fenêtre
+    int pitch;    // Largeur d'une ligne en octets
+
+    // État
+    bool is_running;   // État d'exécution
+    const char *title; // Titre de la fenêtre
+} GAM_Window;
 
 // ═══════════════════════════════════════════════════════════════════════════
-// INFORMATIONS SUR LA BIBLIOTHÈQUE
+// VOS FONCTIONS EXISTANTES
 // ═══════════════════════════════════════════════════════════════════════════
 
-#define GAM_DL_VERSION_MAJOR 1
-#define GAM_DL_VERSION_MINOR 0
-#define GAM_DL_VERSION_PATCH 0
-#define GAM_DL_VERSION_STRING "1.0.0"
+// Fonctions que vous avez déjà implémentées
+GAM_Window *GAM_DL_CoreWindowPop(int width, int height);
+void GAM_DL_GAM_DL_CoreExit(GAM_Window *gam_window);
+int GAM_DL_CoreMainWindowShow(void);
 
-// Fonction pour obtenir la version
-const char *GAM_DL_GetVersion(void);
-
-#endif // GAM_DL_H
+#endif // GAM_DL_CORE_H

@@ -9,48 +9,67 @@
  * ╭─────────────────────────────────────────────────────────────────────────╮ *
  * │  ** LEGENDARY ULTRA-MEGA AWESOME LIBRARY SDL3 C FOR RENDERS, MUSICS **  │ *
  * ├─────────────────────────────────────────────────────────────────────────┤ *
- * │  -> Nom      : GAM_DL.h (Header Principal - Include Tout)               │ *
+ * │  -> Nom      : GAM_DL_events.h                                          │ *
  * │  -> Auteur   : tricaducee SpartaCod lolilol                             │ *
  * │  -> Date     : 01/06/2025                                               │ *
  * ╰─────────────────────────────────────────────────────────────────────────╯ *
  */
 
-#ifndef GAM_DL_H
-#define GAM_DL_H
+#ifndef GAM_DL_EVENTS_H
+#define GAM_DL_EVENTS_H
+
+#include "GAM_DL_core.h"
 
 // ═══════════════════════════════════════════════════════════════════════════
-// INCLUSIONS DE TOUS LES MODULES GAM_DL
+// TYPES ET STRUCTURES POUR LES ÉVÉNEMENTS
 // ═══════════════════════════════════════════════════════════════════════════
 
-#include "GAM_DL_core.h"	// Fonctions de base (window, init, quit)
-#include "GAM_DL_texture.h" // Textures, images, sprites
-#include "GAM_DL_draw.h"	// Fonctions de dessin
-#include "GAM_DL_events.h"	// Gestion des événements
+// Type de fonction pour gérer les événements
+typedef void (*GAM_EventHandler)(SDL_Event *event, GAM_Window *window);
+
+// Structure pour mapper les événements
+typedef struct
+{
+    Uint32 event_type;
+    GAM_EventHandler handler;
+} GAM_EventMapping;
+
+// États des touches et souris
+typedef struct
+{
+    bool keys[SDL_NUM_SCANCODES];     // État de toutes les touches
+    bool mouse_buttons[8];            // État des boutons souris
+    int mouse_x, mouse_y;             // Position souris
+    int mouse_wheel_x, mouse_wheel_y; // Molette souris
+} GAM_InputState;
 
 // ═══════════════════════════════════════════════════════════════════════════
-// CONSTANTES GLOBALES DE COMPATIBILITÉ
+// VOS FONCTIONS EXISTANTES
 // ═══════════════════════════════════════════════════════════════════════════
 
-// Aliases pour compatibilité avec l'ancienne API
-#define WIDTH GAM_DL_DEFAULT_WIDTH
-#define HEIGHT GAM_DL_DEFAULT_HEIGHT
-#define GAM_Window GAM_Window // Déjà défini dans core
-
-// Aliases des fonctions principales (compatibilité)
-#define GAM_DL_CoreWindowPop(w, h) GAM_DL_CreateWindow(w, h, "GAM_DL Window")
-#define GAM_DL_GAM_DL_CoreExit(window) GAM_DL_DestroyWindow(window)
-#define GAM_DL_CoreExit(window) GAM_DL_DestroyWindow(window)
+// Fonction que vous avez déjà implémentée
+int GAM_DL_EventHandle(SDL_Event *event);
 
 // ═══════════════════════════════════════════════════════════════════════════
-// INFORMATIONS SUR LA BIBLIOTHÈQUE
+// CONSTANTES UTILES
 // ═══════════════════════════════════════════════════════════════════════════
 
-#define GAM_DL_VERSION_MAJOR 1
-#define GAM_DL_VERSION_MINOR 0
-#define GAM_DL_VERSION_PATCH 0
-#define GAM_DL_VERSION_STRING "1.0.0"
+// Aliases pour les touches courantes
+#define GAM_KEY_ESC SDL_SCANCODE_ESCAPE
+#define GAM_KEY_SPACE SDL_SCANCODE_SPACE
+#define GAM_KEY_ENTER SDL_SCANCODE_RETURN
+#define GAM_KEY_W SDL_SCANCODE_W
+#define GAM_KEY_A SDL_SCANCODE_A
+#define GAM_KEY_S SDL_SCANCODE_S
+#define GAM_KEY_D SDL_SCANCODE_D
+#define GAM_KEY_UP SDL_SCANCODE_UP
+#define GAM_KEY_DOWN SDL_SCANCODE_DOWN
+#define GAM_KEY_LEFT SDL_SCANCODE_LEFT
+#define GAM_KEY_RIGHT SDL_SCANCODE_RIGHT
 
-// Fonction pour obtenir la version
-const char *GAM_DL_GetVersion(void);
+// Boutons souris
+#define GAM_MOUSE_LEFT SDL_BUTTON_LEFT
+#define GAM_MOUSE_RIGHT SDL_BUTTON_RIGHT
+#define GAM_MOUSE_MIDDLE SDL_BUTTON_MIDDLE
 
-#endif // GAM_DL_H
+#endif // GAM_DL_EVENTS_H
