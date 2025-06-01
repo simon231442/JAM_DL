@@ -1,8 +1,0 @@
-/home/srenaud/Documents/gam_DL/sdl3-game/build/CMakeFiles/SDL3Game.dir
-/home/srenaud/Documents/gam_DL/sdl3-game/build/CMakeFiles/edit_cache.dir
-/home/srenaud/Documents/gam_DL/sdl3-game/build/CMakeFiles/rebuild_cache.dir
-/home/srenaud/Documents/gam_DL/sdl3-game/build/lib/SDL3/CMakeFiles/SDL3-shared.dir
-/home/srenaud/Documents/gam_DL/sdl3-game/build/lib/SDL3/CMakeFiles/SDL3_test.dir
-/home/srenaud/Documents/gam_DL/sdl3-game/build/lib/SDL3/CMakeFiles/SDL_uclibc.dir
-/home/srenaud/Documents/gam_DL/sdl3-game/build/lib/SDL3/CMakeFiles/edit_cache.dir
-/home/srenaud/Documents/gam_DL/sdl3-game/build/lib/SDL3/CMakeFiles/rebuild_cache.dir

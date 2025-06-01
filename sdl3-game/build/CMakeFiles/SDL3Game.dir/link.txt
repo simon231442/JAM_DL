@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/SDL3Game.dir/src/main.c.o CMakeFiles/SDL3Game.dir/src/GAM_DL_window.c.o -o bin/SDL3Game  -Wl,-rpath,/home/srenaud/Documents/gam_DL/sdl3-game/build/lib/SDL3 lib/SDL3/libSDL3.so.0.3.0 

@@ -1,0 +1,45 @@
+{
+    // Configuration des tabulations et indentation
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.useTabStops": true,
+    // Configuration spécifique pour C/C++
+    "[c]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": false,
+        "editor.detectIndentation": true
+    },
+    "[cpp]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false
+    },
+    "[h]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": false,
+        "editor.detectIndentation": true
+    },
+    // Configuration pour les Makefiles (ils nécessitent des vraies tabs)
+    "[makefile]": {
+        "editor.insertSpaces": false,
+        "editor.detectIndentation": false
+    },
+    // Affichage des caractères invisibles
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [
+        80,
+        120
+    ],
+    // Configuration C/C++ IntelliSense
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "C_Cpp.default.intelliSenseMode": "linux-clang-x64",
+    "C_Cpp.default.cStandard": "c17",
+    "C_Cpp.default.cppStandard": "c++17",
+    // Désactiver certaines suggestions pour éviter les conflits
+    "C_Cpp.autocomplete": "enabled",
+    "C_Cpp.errorSquiggles": "enabled",
+    // Formatage automatique
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true
+}

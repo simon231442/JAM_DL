@@ -3,13 +3,32 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/include"
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/sdl3-game/lib/SDL3/include",
+                "${workspaceFolder}/sdl3-game/build/lib/SDL3/include-config-*",
+                "/usr/include",
+                "/usr/local/include"
             ],
-            "defines": [],
-            "compilerPath": "/usr/bin/clang",
+            "defines": [
+                "SDL_MAIN_USE_CALLBACKS"
+            ],
+            "compilerPath": "/usr/bin/gcc",
             "cStandard": "c17",
-            "cppStandard": "c++14",
-            "intelliSenseMode": "linux-clang-x64"
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "compilerArgs": [
+                "-Wall",
+                "-Wextra",
+                "-std=c99"
+            ],
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/include",
+                    "${workspaceFolder}/src",
+                    "${workspaceFolder}/sdl3-game/lib/SDL3/include",
+                    "${workspaceFolder}/sdl3-game/build/lib/SDL3"
+                ]
+            }
         }
     ],
     "version": 4

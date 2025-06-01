@@ -1,0 +1,39 @@
+# EditorConfig - Configuration universelle pour tous les éditeurs
+# https://editorconfig.org/
+
+root = true
+
+# Configuration par défaut pour tous les fichiers
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# Configuration spécifique pour les fichiers C/C++
+[*.{c,h,cpp,hpp,cc,cxx}]
+indent_style = tab
+indent_size = 4
+max_line_length = 120
+
+# Configuration pour les Makefiles (doivent utiliser des vraies tabs)
+[{Makefile,makefile,*.mk}]
+indent_style = tab
+indent_size = 4
+
+# Configuration pour les fichiers JSON
+[*.json]
+indent_style = space
+indent_size = 2
+
+# Configuration pour les fichiers markdown
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = 80
+
+# Configuration pour les scripts shell
+[*.{sh,bash,zsh}]
+indent_style = space
+indent_size = 2

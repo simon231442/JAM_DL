@@ -9,44 +9,26 @@
  * ╭─────────────────────────────────────────────────────────────────────────╮ *
  * │  ** LEGENDARY ULTRA-MEGA AWESOME LIBRARY SDL3 C FOR RENDERS, MUSICS **  │ *
  * ├─────────────────────────────────────────────────────────────────────────┤ *
- * │  -> Nom      : GAM_DL_CoreMainWindowShow.c                              │ *
+ * │  -> Nom      : GAM_DL_GAM_DL_CoreExit.c                                 │ *
  * │  -> Auteur   : lolilol                                                  │ *
- * │  -> Date     : 31/05/2025                                               │ *
+ * │  -> Date     : 01/06/2025                                               │ *
  * ╰─────────────────────────────────────────────────────────────────────────╯ *
  */
 
 #include "GAM_DL.h"
 
-int GAM_DL_CoreMainWindowShow(void)
+void GAM_DL_GAM_DL_CoreExit(GAM_Window *gam_window)
 {
-	GAM_Window *gam_window;
-	SDL_Event event;
-	int should_quit = 0;
-
-	gam_window = GAM_DL_CoreWindowPop(WIDTH, HEIGHT);
-	if (!gam_window)
-		return (GAM_DL_CoreExit(gam_window), 1);
-
-	// Boucle principale du jeu
-	while (!should_quit)
+	if (gam_window)
 	{
-		// Gestion des événements - Vider complètement la queue
-		while (SDL_PollEvent(&event))
-		{
-			if (GAM_DL_EventHandle(&event))
-			{
-				should_quit = 1; // Signal pour quitter
-				break;
-			}
-		}
-
-		// TODO: Ajouter la logique du jeu ici
-
-		// TODO: Ajouter le rendu ici
-		SDL_Delay(16); // ~60 FPS temporaire
+		if (gam_window->texture)
+			SDL_DestroyTexture(gam_window->texture);
+		if (gam_window->renderer)
+			SDL_DestroyRenderer(gam_window->renderer);
+		if (gam_window->window)
+			SDL_DestroyWindow(gam_window->window);
+		free(gam_window);
 	}
-
-	// Nettoyage avant fermeture
-	GAM_DL_CoreExit(gam_window);
-	return (0);
+	SDL_Quit();
+	exit(0);
 }
