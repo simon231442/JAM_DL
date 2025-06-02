@@ -9,48 +9,58 @@
  * ╭─────────────────────────────────────────────────────────────────────────╮ *
  * │  ** LEGENDARY ULTRA-MEGA AWESOME LIBRARY SDL3 C FOR RENDERS, MUSICS **  │ *
  * ├─────────────────────────────────────────────────────────────────────────┤ *
- * │  -> Nom      : GAM_DL.h (Header Principal - Include Tout)               │ *
+ * │  -> Nom      : GAM_DL.h                                                 │ *
  * │  -> Auteur   : tricaducee SpartaCod lolilol                             │ *
- * │  -> Date     : 01/06/2025                                               │ *
+ * │  -> Date     : 31/05/2025                                               │ *
  * ╰─────────────────────────────────────────────────────────────────────────╯ *
- */
+*/
 
 #ifndef GAM_DL_H
 #define GAM_DL_H
 
-// ═══════════════════════════════════════════════════════════════════════════
-// INCLUSIONS DE TOUS LES MODULES GAM_DL
-// ═══════════════════════════════════════════════════════════════════════════
+#include <SDL3/SDL.h>
 
-#include "GAM_DL_core.h"	// Fonctions de base (window, init, quit)
-#include "GAM_DL_texture.h" // Textures, images, sprites
-#include "GAM_DL_draw.h"	// Fonctions de dessin
-#include "GAM_DL_events.h"	// Gestion des événements
+typedef struct
+{
+	SDL_Window      *window;       // Fenêtre SDL (corrigé: était "widow")
+	SDL_Renderer    *renderer;     // Renderer SDL
+	SDL_Texture     *texture;      // Texture pour manipulation pixels
 
-// ═══════════════════════════════════════════════════════════════════════════
-// CONSTANTES GLOBALES DE COMPATIBILITÉ
-// ═══════════════════════════════════════════════════════════════════════════
+	// Informations sur l'image/pixels
+	void            *pixels;       // Adresse des pixels
+	int             width;         // Largeur de la fenêtre
+	int             height;        // Hauteur de la fenêtre
+	int             pitch;         // Nombre d'octets par ligne
+	Uint32          format;        // Format des pixels (endianness)
 
-// Aliases pour compatibilité avec l'ancienne API
-#define WIDTH GAM_DL_DEFAULT_WIDTH
-#define HEIGHT GAM_DL_DEFAULT_HEIGHT
-#define GAM_Window GAM_Window // Déjà défini dans core
+	// État de la fenêtre
+	bool            is_running;    // État d'exécution
+	const char      *title;        // Titre de la fenêtre
+}   GAM_Window;
 
-// Aliases des fonctions principales (compatibilité)
-#define GAM_DL_CoreWindowPop(w, h) GAM_DL_CreateWindow(w, h, "GAM_DL Window")
-#define GAM_DL_GAM_DL_CoreExit(window) GAM_DL_DestroyWindow(window)
-#define GAM_DL_CoreExit(window) GAM_DL_DestroyWindow(window)
+	
+	/* ═══════════════════════════════════════════════════════════════════════
+	 * CALCULS UTILES - FORMAT RGBA8888 (4 octets par pixel)
+	 * ═══════════════════════════════════════════════════════════════════════
+	 * 
+	 * ORGANISATION MÉMOIRE PAR PIXEL:
+	 * Pixel = [R][G][B][A] = 4 octets (32 bits)
+	 *          0  1  2  3   (indices d'octets)
+	 * 
+	 * CALCULS FONDAMENTAUX:
+	 * - Octets par pixel       = 4
+	 * - Largeur ligne (pitch)  = width * 4
+	 * - Taille texture totale  = width * height * 4
+	 * - Adresse pixel (x,y)    = pixels + (y * pitch) + (x * 4)
+	 * 
+	 * EXEMPLES POUR 800x600:
+	 * - 1 ligne    = 800 × 4 = 3,200 octets
+	 * - Texture    = 800 × 600 × 4 = 1,920,000 octets (≈1.92 MB)
+	 * 
+	 * ACCÈS PIXEL INDIVIDUEL:
+	 * Uint32* pixel_addr = (Uint32*)((Uint8*)pixels + y*pitch + x*4);
+	 * ═══════════════════════════════════════════════════════════════════════ */
 
-// ═══════════════════════════════════════════════════════════════════════════
-// INFORMATIONS SUR LA BIBLIOTHÈQUE
-// ═══════════════════════════════════════════════════════════════════════════
+#endif
 
-#define GAM_DL_VERSION_MAJOR 1
-#define GAM_DL_VERSION_MINOR 0
-#define GAM_DL_VERSION_PATCH 0
-#define GAM_DL_VERSION_STRING "1.0.0"
 
-// Fonction pour obtenir la version
-const char *GAM_DL_GetVersion(void);
-
-#endif // GAM_DL_H

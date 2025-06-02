@@ -29,7 +29,6 @@ int GAM_DL_CoreMainWindowShow(void)
 	gam_image = GAM_DL_Texture_load();
 	if (!gam_image)
 		return (GAM_DL_CoreExit(gam_window), 1);
-	// Boucle principale du jeu
 	while (1)
 	{
 		// Gestion des événements - Vider complètement la queue
